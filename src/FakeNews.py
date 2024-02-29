@@ -5,6 +5,7 @@ import nltk
 import matplotlib.pyplot as plt
 from nltk.corpus import stopwords
 # nltk.download('stopwords')
+from nltk.stem import PorterStemmer
 
 
 url = 'https://raw.githubusercontent.com/several27/FakeNewsCorpus/master/news_sample.csv'
