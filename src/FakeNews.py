@@ -9,6 +9,8 @@ url = 'https://raw.githubusercontent.com/several27/FakeNewsCorpus/master/news_sa
 
 data = pd.read_csv(url)
 
+data.to_csv('originaldata.csv', index=False)
+
 print("the shape of the data is: ", data.shape)
 
 print(data.head())
