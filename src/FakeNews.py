@@ -3,6 +3,8 @@ import pandas as pd
 import nltk
 # nltk.download('punkt') ----> udkommenter denne linje, hvis du ikke har nltk installeret
 import matplotlib.pyplot as plt
+from nltk.corpus import stopwords
+# nltk.download('stopwords')
 
 
 url = 'https://raw.githubusercontent.com/several27/FakeNewsCorpus/master/news_sample.csv'
@@ -53,6 +55,10 @@ def cleanText(text):
     # replace emails with <EMAIL>
     text = re.sub(r'\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b', '<EMAIL>', text)
 
+    # remove punctuation and commas
+
+    text = re.sub(r'[.,;!?]', '', text)
+
     return text
 
 data['content'] = data['content'].apply(cleanText)
@@ -64,4 +70,21 @@ data.to_csv('cleaned_data.csv', index=False)
 tokens = data['content'].apply(nltk.word_tokenize)
 
 print(tokens.head())
-print(tokens.shape)
+
+# remove stop words
+
+stop_words = set(stopwords.words('english'))
+
+filtered_tokens = []
+
+for token in tokens:
+    filtered_words = []
+    for word in token:
+        if word not in stop_words:
+            filtered_words.append(word)
+    filtered_tokens.append(filtered_words)
+
+print(filtered_tokens)
+print("len of filtered tokens: ", len(filtered_tokens))
+
+# print(tokens.shape)
