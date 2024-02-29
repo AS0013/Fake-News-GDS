@@ -1,12 +1,15 @@
 import re
 import pandas as pd
 import nltk
+# nltk.download('punkt') ----> udkommenter denne linje, hvis du ikke har nltk installeret
 import matplotlib.pyplot as plt
 
 
 url = 'https://raw.githubusercontent.com/several27/FakeNewsCorpus/master/news_sample.csv'
 
 data = pd.read_csv(url)
+
+print("the shape of the data is: ", data.shape)
 
 print(data.head())
 
@@ -40,7 +43,7 @@ def cleanText(text):
 
 
     # replace numbers with <NUM>
-    # text = re.sub(r'\d+', '<NUM>', text)
+    text = re.sub(r'\d+', '<NUM>', text)
 
     # replace urls with <URL>
     text = re.sub(r'(http|https)://[^\s]*', '<URL>', text)
@@ -54,6 +57,9 @@ data['content'] = data['content'].apply(cleanText)
 
 data.to_csv('cleaned_data.csv', index=False)
 
+# tokenize the text using nltk
 
+tokens = data['content'].apply(nltk.word_tokenize)
 
-
+print(tokens.head())
+print(tokens.shape)
