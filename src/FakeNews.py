@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 import nltk
-# nltk.download('punkt') ----> udkommenter denne linje, hvis du ikke har nltk installeret
+nltk.download('punkt') # ----> udkommenter denne linje, hvis du ikke har nltk installeret
 import matplotlib.pyplot as plt
 
 
