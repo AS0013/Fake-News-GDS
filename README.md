@@ -22,4 +22,6 @@ Futhermore, make sure to install following dependency via pip:
 This is done with command:
 > pip install -U scikit-learn
 
+The *LIAR* dataset is already located in **src/LIARDATASET**.
+
 To run: Open **src/FinalFakeNewsBigData.ipynb** in editor of choice and run the cells in chronological order.
